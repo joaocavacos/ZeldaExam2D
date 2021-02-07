@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState{
+    IDLE,
+    ATTACK,
+    MOVE
+}
+
 public class LinkMovement : MonoBehaviour
 {
     public float speed;
@@ -13,30 +19,50 @@ public class LinkMovement : MonoBehaviour
 
     Vector2 movement;
 
+    public PlayerState playerState;
+    private LinkMovement linkMovement;
 
-    // Update is called once per frame
+
+    void Start() {
+        playerState = PlayerState.IDLE;
+    }
+    
     void Update()
     {
+        movement = Vector2.zero;
         movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude); //Speed is the magnitude, squared for better optimization
+        movement.y = Input.GetAxisRaw("Vertical");  
     }
 
 	void FixedUpdate()
 	{
-		if (Input.GetKey(KeyCode.LeftShift)) //Sprint
-		{
-            rb.MovePosition(rb.position + movement.normalized * sprintSpeed * Time.fixedDeltaTime);
-		}
-		else
-		{
-            rb.MovePosition(rb.position + movement.normalized * speed * Time.fixedDeltaTime); //Normal movement, normalized so the diagonal stays the same speed
-        }
+        if(movement != Vector2.zero){
+            Move();
+
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetBool("Moving", true);
         
-
-
+            playerState = PlayerState.MOVE;
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
+            
+            playerState = PlayerState.IDLE;
+        }
 	}
+
+    private void Move(){
+        
+            if (Input.GetKey(KeyCode.LeftShift)) //Sprint
+		    {
+                rb.MovePosition(rb.position + movement.normalized * sprintSpeed * Time.fixedDeltaTime);
+		    }
+		    else
+		    {
+                rb.MovePosition(rb.position + movement.normalized * speed * Time.fixedDeltaTime); //Normal movement, normalized so the diagonal stays the same speed
+            }
+    }
+
 }

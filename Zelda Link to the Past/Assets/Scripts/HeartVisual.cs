@@ -32,6 +32,7 @@ public class HeartVisual : MonoBehaviour
 
         Vector2 heartAnchorPos = new Vector2(0,0);
 
+        //Create new hearts
         for (int i = 0; i < heartList.Count; i++)
         {
             HeartSystem.Heart heart = heartList[i];
