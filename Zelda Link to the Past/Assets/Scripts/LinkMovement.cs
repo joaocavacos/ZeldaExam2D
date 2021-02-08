@@ -36,21 +36,24 @@ public class LinkMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-        if(movement != Vector2.zero){
-            Move();
+        if(playerState != PlayerState.ATTACK){
+            if(movement != Vector2.zero){
+                Move();
 
-            animator.SetFloat("Horizontal", movement.x);
-            animator.SetFloat("Vertical", movement.y);
-            animator.SetBool("Moving", true);
+                animator.SetFloat("Horizontal", movement.x);
+                animator.SetFloat("Vertical", movement.y);
+                animator.SetBool("Moving", true);
         
-            playerState = PlayerState.MOVE;
-        }
-        else
-        {
-            animator.SetBool("Moving", false);
+                playerState = PlayerState.MOVE;
+            }
+            else
+            {
+                animator.SetBool("Moving", false);
             
-            playerState = PlayerState.IDLE;
+                playerState = PlayerState.IDLE;
+            }
         }
+        
 	}
 
     private void Move(){

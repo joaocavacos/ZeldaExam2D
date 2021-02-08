@@ -22,9 +22,9 @@ public class LinkAttack : MonoBehaviour
 
         linkMovement.animator.SetBool("Attacking", true);
         linkMovement.playerState = PlayerState.ATTACK;
-        yield return null;
+        yield return new WaitForEndOfFrame();
         linkMovement.animator.SetBool("Attacking", false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         linkMovement.playerState = PlayerState.IDLE;
     }
 }
