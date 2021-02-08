@@ -1271,7 +1271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 147891293}
   - component: {fileID: 147891294}
-  - component: {fileID: 147891296}
+  - component: {fileID: 147891295}
   m_Layer: 0
   m_Name: DownHitBox
   m_TagString: Untagged
@@ -1323,7 +1323,7 @@ PolygonCollider2D:
       - {x: -0.30450848, y: -0.4573634}
       - {x: 0.4510311, y: -0.51597214}
       - {x: 0.5114889, y: -0.023100294}
---- !u!114 &147891296
+--- !u!114 &147891295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1332,11 +1332,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 147891292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85806fcf2b5b4d34e85411f9168e84fd, type: 3}
+  m_Script: {fileID: 11500000, guid: cc84c93c34b9c524d9a026c4927e4656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustForce: 3
-  knockbackTime: 0.3
+  thrustForce: 2
+  knockbackTime: 0.2
+  damage: 1
 --- !u!1 &175543322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,7 +1574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 255425884}
   - component: {fileID: 255425885}
-  - component: {fileID: 255425887}
+  - component: {fileID: 255425886}
   m_Layer: 0
   m_Name: UpHitBox
   m_TagString: Untagged
@@ -1625,7 +1626,7 @@ PolygonCollider2D:
       - {x: -0.52917635, y: -0.06663723}
       - {x: 0.1579867, y: -0.027564526}
       - {x: 0.49195307, y: 0.25040796}
---- !u!114 &255425887
+--- !u!114 &255425886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1634,11 +1635,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 255425883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85806fcf2b5b4d34e85411f9168e84fd, type: 3}
+  m_Script: {fileID: 11500000, guid: cc84c93c34b9c524d9a026c4927e4656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustForce: 3
-  knockbackTime: 0.3
+  thrustForce: 2
+  knockbackTime: 0.2
+  damage: 1
 --- !u!1 &359186679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,7 +1847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 558521385}
   - component: {fileID: 558521386}
-  - component: {fileID: 558521388}
+  - component: {fileID: 558521387}
   m_Layer: 0
   m_Name: RightHitBox
   m_TagString: Untagged
@@ -1897,7 +1899,7 @@ PolygonCollider2D:
       - {x: -0.1384497, y: -0.4085229}
       - {x: 0.37288576, y: -0.61365384}
       - {x: 0.59940267, y: 0.18203118}
---- !u!114 &558521388
+--- !u!114 &558521387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1906,11 +1908,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 558521384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85806fcf2b5b4d34e85411f9168e84fd, type: 3}
+  m_Script: {fileID: 11500000, guid: cc84c93c34b9c524d9a026c4927e4656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustForce: 3
-  knockbackTime: 0.3
+  thrustForce: 2
+  knockbackTime: 0.2
+  damage: 1
 --- !u!1 &563234652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,9 +1927,8 @@ GameObject:
   - component: {fileID: 563234655}
   - component: {fileID: 563234657}
   - component: {fileID: 563234656}
-  - component: {fileID: 563234660}
-  - component: {fileID: 563234658}
   - component: {fileID: 563234659}
+  - component: {fileID: 563234658}
   m_Layer: 0
   m_Name: GreenEnemy
   m_TagString: Enemy
@@ -2081,24 +2083,11 @@ MonoBehaviour:
   health: 3
   damage: 1
   speed: 1
+  maxHealth: {fileID: 11400000, guid: b36120b0fa6fd2a45b0c92cde0d76f1a, type: 2}
   playerPos: {fileID: 175543324}
   chaseRadius: 2
   attackRadius: 0.8
---- !u!114 &563234659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563234652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85806fcf2b5b4d34e85411f9168e84fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrustForce: 2
-  knockbackTime: 0.2
---- !u!61 &563234660
+--- !u!61 &563234659
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2111,7 +2100,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0066209435, y: 0.12579775}
+  m_Offset: {x: -0.008540571, y: 0.15942419}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2122,7 +2111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6742581, y: 0.7362199}
+  m_Size: {x: 0.61348164, y: 0.7407391}
   m_EdgeRadius: 0
 --- !u!1 &566899100
 GameObject:
@@ -7775,7 +7764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2038466163}
   - component: {fileID: 2038466164}
-  - component: {fileID: 2038466166}
+  - component: {fileID: 2038466165}
   m_Layer: 0
   m_Name: LeftHitBox
   m_TagString: Untagged
@@ -7829,7 +7818,7 @@ PolygonCollider2D:
       - {x: 0.030999988, y: -0.47689965}
       - {x: 0.08886574, y: -0.21188718}
       - {x: -0.14297703, y: 0.32855317}
---- !u!114 &2038466166
+--- !u!114 &2038466165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7838,11 +7827,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2038466162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85806fcf2b5b4d34e85411f9168e84fd, type: 3}
+  m_Script: {fileID: 11500000, guid: cc84c93c34b9c524d9a026c4927e4656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustForce: 3
-  knockbackTime: 0.3
+  thrustForce: 2
+  knockbackTime: 0.2
+  damage: 1
 --- !u!1 &2094604784
 GameObject:
   m_ObjectHideFlags: 0

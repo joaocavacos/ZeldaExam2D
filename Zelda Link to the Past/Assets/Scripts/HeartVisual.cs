@@ -56,8 +56,7 @@ public class HeartVisual : MonoBehaviour
     }
 
     private void HeartSystemOnDead(object sender, System.EventArgs e){
-        //Player dead
-        //Do stuff, game over
+        Die();
     }
 
     private void RefreshAllHearts(){
@@ -69,6 +68,10 @@ public class HeartVisual : MonoBehaviour
             HeartSystem.Heart heart = heartList[i];
             heartImage.SetHeartFragments(heart.GetFragmentAmmount());
         }
+    }
+
+    private void Die(){
+        Destroy(gameObject, 0.2f);
     }
 
     private HeartImage CreateHeartImage(Vector2 anchorPos){

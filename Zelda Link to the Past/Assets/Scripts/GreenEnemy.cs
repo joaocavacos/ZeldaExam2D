@@ -46,6 +46,7 @@ public class GreenEnemy : Enemy
         }
     }
 
+    //Change animation based on direction
     private void ChangeAnimation(Vector2 direction){
         direction = direction.normalized;
         animator.SetFloat("Horizontal", direction.x);
