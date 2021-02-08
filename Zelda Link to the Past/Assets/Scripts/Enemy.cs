@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyState{
+    IDLE,
+    MOVE,
+    ATTACK,
+    STAGGER
+}
 public class Enemy : MonoBehaviour
 {
-
+    public EnemyState enemyState;
     public int health;
     public int damage;
     public float speed;
@@ -16,8 +22,5 @@ public class Enemy : MonoBehaviour
         heartSystem = new HeartSystem(health);
     }
 
-    void Update()
-    {
-        
-    }
+    
 }

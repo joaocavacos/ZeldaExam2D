@@ -13,7 +13,7 @@ public class LinkAttack : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && linkMovement.playerState != PlayerState.ATTACK){
+        if(Input.GetKeyDown(KeyCode.E) && linkMovement.playerState != PlayerState.ATTACK && linkMovement.playerState != PlayerState.STAGGER){
             StartCoroutine(AttackCoroutine());
         }
     }
@@ -27,4 +27,5 @@ public class LinkAttack : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         linkMovement.playerState = PlayerState.IDLE;
     }
+
 }

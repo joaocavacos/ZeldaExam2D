@@ -5,7 +5,8 @@ using UnityEngine;
 public enum PlayerState{
     IDLE,
     ATTACK,
-    MOVE
+    MOVE,
+    STAGGER
 }
 
 public class LinkMovement : MonoBehaviour

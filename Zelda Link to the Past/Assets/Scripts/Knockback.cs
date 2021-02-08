@@ -11,24 +11,28 @@ public class Knockback : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
 
         if(other.gameObject.CompareTag("Enemy")){
-            Rigidbody2D enemyrb = other.GetComponent<Rigidbody2D>();
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
 
-            if(enemyrb != null){
-                StartCoroutine(KnockbackCoroutine(enemyrb));
+            if(rb != null){
+                if(other.CompareTag("Enemy")){
+                    rb.GetComponent<Enemy>().enemyState = EnemyState.STAGGER;
+                    StartCoroutine(KnockbackCoroutine(rb,knockbackTime,thrustForce));
+                }
             }
         }
     }
 
-    private IEnumerator KnockbackCoroutine(Rigidbody2D enemyrb){
+    private IEnumerator KnockbackCoroutine(Rigidbody2D rb, float knockbackTime, float thrustForce){
 
-        if(enemyrb != null){
-            Vector2 forceDirection = enemyrb.transform.position - transform.position; //The force direction
-            Vector2 force = forceDirection.normalized * thrustForce;
+        if(rb != null){
+            Vector2 forceDirection = rb.transform.position - transform.position; //The force direction
+            Vector2 force = forceDirection.normalized * thrustForce; //Normalize the vector and add force
 
-            enemyrb.velocity = force;
+            rb.velocity = force;
             yield return new WaitForSeconds(knockbackTime);
-            enemyrb.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
+            rb.GetComponent<Enemy>().enemyState = EnemyState.IDLE;
+            rb.velocity = Vector2.zero;
         }
     }
-
 }
