@@ -8,8 +8,8 @@ public class GreenEnemy : Enemy
     public Transform playerPos;
     public float chaseRadius;
     public float attackRadius;
-    //public Transform startPos;
-    private Animator animator;
+    public Transform startPos;
+    public Animator animator;
 
     private Rigidbody2D rb;
 
@@ -40,7 +40,7 @@ public class GreenEnemy : Enemy
                 animator.SetBool("inRange", true);
             }
         }
-        else
+        else if(Vector3.Distance(playerPos.position, transform.position) > chaseRadius)
         {
             animator.SetBool("inRange", false);
         }
