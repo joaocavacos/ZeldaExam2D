@@ -26,6 +26,8 @@ public class Link : MonoBehaviour
     public FloatValue currentHealth;
     public SignalSender playerHealthSignal;
 
+    public GameObject arrow;
+
     void Start() {
         playerState = PlayerState.MOVE;
         animator = GetComponent<Animator>();
@@ -43,6 +45,10 @@ public class Link : MonoBehaviour
 	{
         if(Input.GetKeyDown(KeyCode.E) && playerState != PlayerState.ATTACK && playerState != PlayerState.STAGGER){
             StartCoroutine(AttackCoroutine());
+        }
+        else if(Input.GetKeyDown(KeyCode.R) && playerState != PlayerState.ATTACK && playerState != PlayerState.STAGGER)
+        {
+            StartCoroutine(ArrowCoroutine());
         }
         else if(playerState == PlayerState.IDLE || playerState == PlayerState.MOVE)
         {
@@ -76,6 +82,28 @@ public class Link : MonoBehaviour
         animator.SetBool("Attacking", false);
         yield return new WaitForSeconds(0.5f);
         playerState = PlayerState.MOVE;
+    }
+    private IEnumerator ArrowCoroutine(){
+
+        playerState = PlayerState.ATTACK;
+        yield return new WaitForEndOfFrame();
+        MakeArrow();
+        yield return new WaitForSeconds(0.5f);
+        playerState = PlayerState.MOVE;
+    }
+
+    private void MakeArrow(){
+
+        Vector2 direction = new Vector2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
+        Arrow arrowGO = Instantiate(arrow, transform.position, Quaternion.identity).GetComponent<Arrow>();
+
+        arrowGO.SetupArrow(direction, ArrowRotation());
+    }
+
+    Vector3 ArrowRotation(){
+        float direction = Mathf.Atan2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical")) * Mathf.Rad2Deg;
+
+        return new Vector3(0,0,direction);
     }
 
     public void Attack(float knockbackTime, float damage){
