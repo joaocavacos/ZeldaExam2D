@@ -28,6 +28,10 @@ public class Link : MonoBehaviour
 
     public GameObject arrow;
 
+    [Header ("Sounds")]
+    public AudioSource enemyHit;
+    public AudioSource arrowShot;
+
     void Start() {
         playerState = PlayerState.MOVE;
         animator = GetComponent<Animator>();
@@ -78,6 +82,7 @@ public class Link : MonoBehaviour
 
         animator.SetBool("Attacking", true);
         playerState = PlayerState.ATTACK;
+        enemyHit.Play();
         yield return new WaitForEndOfFrame();
         animator.SetBool("Attacking", false);
         yield return new WaitForSeconds(0.5f);
@@ -86,6 +91,7 @@ public class Link : MonoBehaviour
     private IEnumerator ArrowCoroutine(){
 
         playerState = PlayerState.ATTACK;
+        arrowShot.Play();
         yield return new WaitForEndOfFrame();
         MakeArrow();
         yield return new WaitForSeconds(0.5f);

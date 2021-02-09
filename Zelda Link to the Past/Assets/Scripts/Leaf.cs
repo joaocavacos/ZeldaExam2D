@@ -10,6 +10,9 @@ public class Leaf : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     public LootTable thisLoot;
 
+    [Header ("Sounds")]
+    public AudioSource grassSliced;
+
     void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -19,6 +22,7 @@ public class Leaf : MonoBehaviour
     public void DestroyLeaf(){
         spriteRenderer.sprite = destroyedSprite;
         boxCollider2D.enabled = false;
+        grassSliced.Play();
         MakeLoot();
     }
 

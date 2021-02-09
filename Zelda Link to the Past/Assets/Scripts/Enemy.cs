@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
     public GameObject deathEffect;
     public LootTable thisLoot;
 
+    [Header ("Sounds")]
+    public AudioSource enemyDead;
+
 
 
 
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
 
         if(health <= 0){
+            enemyDead.Play();
             DeathEffect();
             MakeLoot();
             Destroy(this.gameObject);

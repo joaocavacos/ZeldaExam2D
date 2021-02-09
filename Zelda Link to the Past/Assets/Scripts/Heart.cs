@@ -9,9 +9,13 @@ public class Heart : Collectibles
     public FloatValue heartsContainer;
     public float healAmmount;
 
+    [Header ("Sounds")]
+    public AudioSource healSound;
+
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player") && !other.isTrigger){
             playerHealth.runtimeValue += healAmmount;
+            //healSound.Play();
 
             if(playerHealth.runtimeValue > heartsContainer.runtimeValue * 2f){ //Set to max hp if it's more
                 playerHealth.runtimeValue = heartsContainer.runtimeValue * 2f;
