@@ -21,13 +21,13 @@ public class Enemy : MonoBehaviour
         health = maxHealth.initialValue;
     }
 
-    public void Attack(Rigidbody2D rigidbody2D, float knockbackTime, float damage){
+    public void Attack(Rigidbody2D rigidbody2D, float knockbackTime, float damage){ //Knockback and damage the enemy
 
         StartCoroutine(KnockbackCoroutine(rigidbody2D, knockbackTime));
         TakeDamage(damage);
     }
 
-    private void TakeDamage(float damage){
+    private void TakeDamage(float damage){ //Damage method
 
         health -= damage;
 

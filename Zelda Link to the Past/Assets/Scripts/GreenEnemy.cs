@@ -11,7 +11,7 @@ public class GreenEnemy : Enemy
     public Transform startPos;
     public Animator animator;
 
-    private Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
 
     void Start()
     {
@@ -19,6 +19,7 @@ public class GreenEnemy : Enemy
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        animator.SetBool("inRange", true);
     }
 
     void FixedUpdate()
@@ -27,7 +28,7 @@ public class GreenEnemy : Enemy
     }
     
     //Check the distance of the player to the enemy to trigger the MoveTowards
-    void CheckDistance(){
+    public virtual void CheckDistance(){ //can override with virtual
 
         if(Vector3.Distance(playerPos.position, transform.position) <= chaseRadius && Vector3.Distance(playerPos.position, transform.position) > attackRadius){
 
@@ -47,7 +48,7 @@ public class GreenEnemy : Enemy
     }
 
     //Change animation based on direction
-    private void ChangeAnimation(Vector2 direction){
+    public void ChangeAnimation(Vector2 direction){
         direction = direction.normalized;
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
