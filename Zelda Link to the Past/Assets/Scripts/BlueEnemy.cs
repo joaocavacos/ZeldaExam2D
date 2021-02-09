@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BlueEnemy : GreenEnemy
 {
+    [Header ("Patrol Points and Path")]
     public Transform[] path;
     public Transform nextPoint;
     public int currentPoint;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
 {
-
+    [Header ("Attack stats")]
     public float thrustForce;
     public float knockbackTime;
     public float damage;

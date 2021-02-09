@@ -11,6 +11,7 @@ public enum PlayerState{
 
 public class Link : MonoBehaviour
 {
+    [Header ("Player Stats")]
     public float speed;
 
     private Rigidbody2D rb;
@@ -19,7 +20,9 @@ public class Link : MonoBehaviour
 
     Vector2 movement;
 
+    [Header ("State Machine")]
     public PlayerState playerState;
+    [Header ("Scriptable Objects")]
     public FloatValue currentHealth;
     public SignalSender playerHealthSignal;
 

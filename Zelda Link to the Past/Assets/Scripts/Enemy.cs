@@ -10,11 +10,20 @@ public enum EnemyState{
 }
 public class Enemy : MonoBehaviour
 {
+    [Header ("State Machine")]
     public EnemyState enemyState;
+
+    [Header ("Enemy Stats")]
     public FloatValue maxHealth;
     public float health;
     public float damage;
     public float speed;
+
+    [Header ("Death")]
+    public GameObject deathEffect;
+    public LootTable thisLoot;
+
+
 
 
     void Awake() {
@@ -32,7 +41,27 @@ public class Enemy : MonoBehaviour
         health -= damage;
 
         if(health <= 0){
+            DeathEffect();
+            MakeLoot();
             Destroy(this.gameObject);
+        }
+    }
+
+    private void MakeLoot(){
+        if(thisLoot != null){
+            Collectibles current = thisLoot.LootCollectible();
+
+            if(current != null){
+                Instantiate(current.gameObject, transform.position, Quaternion.identity);
+            }
+        }
+    }
+
+    private void DeathEffect()
+    {
+        if(deathEffect != null){
+            GameObject effect = Instantiate(deathEffect,transform.position, Quaternion.identity);
+            Destroy(effect, 1f);
         }
     }
     

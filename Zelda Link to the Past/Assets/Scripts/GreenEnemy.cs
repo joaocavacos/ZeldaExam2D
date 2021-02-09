@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class GreenEnemy : Enemy
 {
-
+    [Header ("Player target position")]
     public Transform playerPos;
+    
+    [Header ("Radius for chasing and attacking")]
     public float chaseRadius;
     public float attackRadius;
+    
+    [Header ("Transforms and Animator")]
     public Transform startPos;
     public Animator animator;
 
