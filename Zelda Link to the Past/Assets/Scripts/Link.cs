@@ -78,16 +78,6 @@ public class Link : MonoBehaviour
         }
     }
 
-    private IEnumerator AttackCoroutine(){
-
-        animator.SetBool("Attacking", true);
-        playerState = PlayerState.ATTACK;
-        enemyHit.Play();
-        yield return new WaitForEndOfFrame();
-        animator.SetBool("Attacking", false);
-        yield return new WaitForSeconds(0.5f);
-        playerState = PlayerState.MOVE;
-    }
     private IEnumerator ArrowCoroutine(){
 
         playerState = PlayerState.ATTACK;
@@ -125,6 +115,16 @@ public class Link : MonoBehaviour
             //Game over
             Debug.Log("Dead");
         }
+    }
+    private IEnumerator AttackCoroutine(){
+
+        animator.SetBool("Attacking", true);
+        playerState = PlayerState.ATTACK;
+        enemyHit.Play();
+        yield return new WaitForEndOfFrame();
+        animator.SetBool("Attacking", false);
+        yield return new WaitForSeconds(0.5f);
+        playerState = PlayerState.MOVE;
     }
 
     private IEnumerator KnockbackCoroutine(float knockbackTime){
